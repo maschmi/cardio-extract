@@ -1,13 +1,16 @@
 import React from "react";
 import {Converter, Measurement} from "./converter";
 
-interface MainProps {}
+export interface MainProps {
+    publish: (data: Measurement[]) => void;
+}
 
 interface MainState {
     selectedFile: string,
     measurements: Measurement[]
 }
-export class Main extends React.Component<any, any> {
+
+export class FileLoader extends React.Component<any, any> {
 
     converter: Converter
     state: MainState
@@ -26,24 +29,18 @@ export class Main extends React.Component<any, any> {
                 <p>
                     <input type="file" name="file" onChange= {event => this.changeHandler(event)}/>
                 </p>
-                {this.state.measurements}
+                Loaded {this.state.measurements.length} measurements
             </div>
         )
     }
 
     changeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
-        console.log("File")
         this.setState({...this.state, selectedFile: event.target.value});
-        console.log(this.state.selectedFile);
         const file = event?.target?.files?.item(0);
         file?.arrayBuffer().then((buf) =>
-            this.converter.openDB(new Uint8Array(buf))
-                .then(res => {
-                    console.log(res);
-                    return res;
-                })
+            this.converter.readFromDB(new Uint8Array(buf))
                 .then(res => this.setState({...this.state, measurements: res}))
-
+                .then(() => this.props.publish(this.state.measurements))
         );
     }
 }

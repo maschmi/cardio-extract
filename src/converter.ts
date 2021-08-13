@@ -18,21 +18,30 @@ export interface Measurement {
 }
 export class Converter {
 
-    public async openDB(db: ArrayLike<any>): Promise<Measurement[]> {
+    public async readFromDB(db: ArrayLike<any>): Promise<Measurement[]> {
 
         const SQL = await initSqlJs({ locateFile: () => sqlWasm });
         const sqlDb = new SQL.Database(db);
         const sql = "SELECT value FROM serverCache";
         const result = sqlDb.exec(sql);
-        return result.flatMap((e : QueryExecResult)=>
-            e.values.flatMap((v: SqlValue[]) => this.uint8arrayToStringMethod(v.map(x => x as number))));
+        const data = result.flatMap((e : QueryExecResult)=>
+            e.values.flatMap((v: SqlValue[]) => Converter.uint8arrayToStringMethod(v.map(x => x as number))))
+
+        return data.filter((m: Measurement) => !isNaN(m?.measurement_time));
     }
 
 
-    private uint8arrayToStringMethod(myUint8Arr: number[]): string {
+    private static uint8arrayToStringMethod(myUint8Arr: number[]): Measurement {
         let inner = myUint8Arr[0];
         // @ts-ignore
-        return String.fromCodePoint(...inner);
+        const content = String.fromCodePoint(...inner);
+        try {
+            return JSON.parse(content) as Measurement
+        } catch {
+            return {} as Measurement
+        }
+
+
     }
 }
 
