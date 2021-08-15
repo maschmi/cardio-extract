@@ -20,11 +20,11 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco",
-    "test": "craco",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "craco eject",
-    "predploy": "craco",
-    "deploy": "gh-pages -d public"
+    "predploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
