@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/cardio-extract/static/css/main.fb2ee24b.chunk.css",
+    "main.js": "/cardio-extract/static/js/main.95c4be6b.chunk.js",
+    "main.js.map": "/cardio-extract/static/js/main.95c4be6b.chunk.js.map",
+    "runtime-main.js": "/cardio-extract/static/js/runtime-main.e3ebd29e.js",
+    "runtime-main.js.map": "/cardio-extract/static/js/runtime-main.e3ebd29e.js.map",
+    "static/js/2.78eac49c.chunk.js": "/cardio-extract/static/js/2.78eac49c.chunk.js",
+    "static/js/2.78eac49c.chunk.js.map": "/cardio-extract/static/js/2.78eac49c.chunk.js.map",
+    "static/js/3.cbf5352f.chunk.js": "/cardio-extract/static/js/3.cbf5352f.chunk.js",
+    "static/js/3.cbf5352f.chunk.js.map": "/cardio-extract/static/js/3.cbf5352f.chunk.js.map",
+    "index.html": "/cardio-extract/index.html",
+    "sql-wasm.wasm": "/cardio-extract/sql-wasm-5bb75ff49a85d6b67f21bb7c25ab1b64.wasm",
+    "static/css/main.fb2ee24b.chunk.css.map": "/cardio-extract/static/css/main.fb2ee24b.chunk.css.map",
+    "static/js/2.78eac49c.chunk.js.LICENSE.txt": "/cardio-extract/static/js/2.78eac49c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e3ebd29e.js",
+    "static/js/2.78eac49c.chunk.js",
+    "static/css/main.fb2ee24b.chunk.css",
+    "static/js/main.95c4be6b.chunk.js"
+  ]
+}
