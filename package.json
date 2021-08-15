@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maschmi.github.io/cardio-extract",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -21,7 +22,9 @@
     "start": "craco start",
     "build": "craco",
     "test": "craco",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "predploy": "yarn run craco",
+    "deploy": "gh-pages -d public"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +48,7 @@
     "@craco/craco": "^6.2.0",
     "@types/sql.js": "^1.4.2",
     "autoprefixer": "^9",
+    "gh-pages": "^3.2.3",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
