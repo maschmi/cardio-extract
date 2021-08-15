@@ -1,6 +1,6 @@
 import React from "react";
 import {Measurement} from "./Models";
-
+import "./tailwind.css"
 export interface DetailsProps {
     input: Measurement[]
 }
@@ -35,18 +35,22 @@ export function ImportDetails(props: DetailsProps) {
     const {firstMeasurementTime, lastMeasurementTime} = extractDates(measurements);
     const {avgDia, avgSys } = calculateAverage(measurements);
     return (
-        <div className="meta">
-            <div className="meta-row">
-                First measurement {firstMeasurementTime?.toLocaleString()}
+        <div className="rounded shadow p-2 border bg-gray-50 flex flex-col">
+            <div className="grid grid-cols-2 gap-2">
+                <div>
+                    First measurement {firstMeasurementTime?.toLocaleString()}
+                </div>
+                <div>
+                    Last measurement {lastMeasurementTime?.toLocaleString()}
+                </div>
             </div>
-            <div className="meta-row">
-                Last measurement {lastMeasurementTime?.toLocaleString()} <br/>
-            </div>
-            <div className="meta-row">
-                Average Diastolic {avgDia.toFixed(2)} <br/>
-            </div>
-            <div className="meta-row">
-                Average Systolic {avgSys.toFixed(2)}
+            <div className="grid grid-cols-2 gap-2">
+                <div>
+                    Average Diastolic {avgDia.toFixed(2)} mmHg
+                </div>
+                <div>
+                    Average Systolic {avgSys.toFixed(2)} mmHg
+                </div>
             </div>
         </div>
     )

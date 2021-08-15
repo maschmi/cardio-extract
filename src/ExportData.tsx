@@ -1,5 +1,5 @@
 import {Measurement} from "./Models";
-
+import "./tailwind.css"
 export interface ExportProps {
     data: Measurement[]
 }
@@ -48,10 +48,12 @@ function exportData(data: Measurement[]) {
 }
 export function ExportData(props: ExportProps) {
     return (
-        <>
-            <button disabled={props.data.length === 0}
+        <div className="rounded shadow border bg-gray-50 inline-flex justify-center">
+            <button className="rounded p-2 my-2 text-center hover:bg-blue-500 bg-blue-200"
+                disabled={props.data.length === 0}
                 onClick={() => exportData(props.data)}
             >Export as CSV</button>
-        </>
+        </div>
+
     )
 }
